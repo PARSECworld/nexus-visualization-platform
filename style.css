@@ -53,13 +53,13 @@ a.button {
     color:#1596D0;
 }
 
-.workspace {
+/* .workspace {
     position:absolute;
     width: 100vw;
     height: 100vh;
     top: 0px;
     left: 0px;
-}
+} */
 
 .side-bar {
     position:absolute;
@@ -88,7 +88,7 @@ a.button {
     left:20%;
 }
 
-.menu-btn.active, .menu-btn.collapsible:hover {
+.menu-btn.active,.menu-btn.collapsible:hover {
     background-color: rgba(15, 109, 153, 0.7);
     border: 1px solid transparent;
     border-radius: 5px;
