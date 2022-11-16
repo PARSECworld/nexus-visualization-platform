@@ -1,0 +1,112 @@
+html {
+    box-sizing:border-box;
+    width:auto;
+    height:auto;
+}
+
+.header {
+    position:absolute;
+    width:100vw;
+    height:100px;
+    top:0;
+    left:0;
+    background:#FFFFFF;
+}
+
+.parsec-logo {
+    box-sizing:border-box;
+    position:absolute;
+    left:30px;
+    top:0.75vh;
+    height:85;
+    width:111px;
+}
+
+.nexus-logo {
+    box-sizing:border-box;
+    position:absolute;
+    left:144px;
+    top:0.6vh;
+    height:90px;
+    width:137px;
+}
+
+a.button {
+    border:1px solid transparent;
+    border-radius: 4px;
+    box-shadow:none;
+    cursor:pointer;
+    padding-top:38px;
+    padding-right:50px;
+    font-family:'Montserrat';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing:.2px;
+    text-decoration:none;
+    color:rgba(30, 30, 30, 0.5);
+    background-color:rgba(0.0, 0.0, 0.0, 0.0);
+    float:right;
+}
+
+.button:hover,.button:focus,.button.active{
+    color:#1596D0;
+}
+
+.workspace {
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+}
+
+.side-bar {
+    position:absolute;
+    width: 70px;
+    height: 100vh;
+    left: 0px;
+    top: 100px;
+    background:#1596D0;
+}
+
+.menu-btn {
+    border:1px solid transparent;
+
+    font-family:'Font Awesome 5 Free';
+    font-style:normal;
+    font-weight:900;
+    font-size:32px;
+    line-height:37px;
+    text-align:center;
+
+    background-color: transparent;
+    color:#FFFFFF;
+
+    position:absolute;
+    top:10px;
+    left:20%;
+}
+
+.menu-btn.active, .menu-btn.collapsible:hover {
+    background-color: rgba(15, 109, 153, 0.7);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+.menu {
+    position:absolute;
+    z-index: 1;
+    width: 0;
+    height:100vh;
+    left:70px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    background-color: #E4E4E4;
+}
+
+body {
+    align-items: center;
+    background:#535353;
+}
