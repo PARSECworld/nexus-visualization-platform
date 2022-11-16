@@ -15,15 +15,15 @@
         <img class="parsec-logo" src="media/PARSEC-LOGO.jpg"></img>
         <img class="nexus-logo" src="media/NEXUS-LOGO.png"></img>
         <div class="menu-button">
-            <a id="metodologia" class="button" href="metodologia.html">
+            <div id="metodologia" class="button">
                 Metodologia
-            </a>
-            <a id="projeto"     class="button" href="projeto.html">
+            </div>
+            <div id="projeto"     class="button">
                 Projeto
-            </a>
-            <a id="plataforma"  class="button active" href="index.html">
+            </div>
+            <div id="plataforma"  class="button active">
                 Plataforma
-            </a>
+            </div>
         </div>
     </div>
     <div class="workspace">
@@ -34,6 +34,8 @@
             <div id="menu" class="menu"></div>
         </div>
     </div>
+    <div class="project"></div>
+    <div class="method"></div>
     <script>
         var menu_btn = document.getElementsByClassName("collapsible")[0];
         menu_btn.addEventListener("click", function() {
@@ -45,6 +47,28 @@
                 menu.style.width = "550px";
             }
         });
+    </script>
+    <script>
+        var page_map = {
+            "plataforma" : "workspace",
+            "projeto" : "project",
+            "metodologia" : "method"
+        };
+        var buttons = document.getElementsByClassName("button");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function() {
+                for (let j = 0; j < buttons.length; j++) {
+                    var id = buttons[j].getAttribute("id");
+                    var page = document.getElementsByClassName(page_map[id])[0];
+                    buttons[j].classList.remove("active");
+                    page.style.display = "none";
+                }
+                var id = this.getAttribute("id");
+                var page = document.getElementsByClassName(page_map[id])[0];
+                this.classList.toggle("active");
+                page.style.display = "block";
+            });
+        }
     </script>
 </body>
 </html>
