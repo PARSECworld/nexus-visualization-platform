@@ -31,25 +31,27 @@
         </div>
     </div>
     <div class="workspace">
-        <div class="app">
-            <!-- <div class="side-bar">
-                <button class="collapsible menu-btn"></button>
-                <div id="menu" class="menu"></div>
+        <div class="app page">
+            <div class="side-bar">
+                <button class="collapsible menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
+            <div id="menu" class="menu"></div>
             <div class="earth-engine-app">
                 <iframe id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
                 allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow: auto;"
                 src="https://igorzoeller.users.earthengine.app/view/nexus-web-app"></iframe>
-            </div> -->
+            </div>
         </div>
-        <div class="project" style="display: none;">
+        <div class="project page" style="display: none;">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
             </p>
         </div>
-        <div class="method" style="display: none;">
+        <div class="method page" style="display: none;">
             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
                 architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
@@ -93,7 +95,7 @@
                 var id = this.getAttribute("id");
                 var page = document.getElementsByClassName(page_map[id])[0];
                 this.classList.toggle("active");
-                page.style.display = "block";
+                page.style.display = "flex";
             });
         }
     </script>
