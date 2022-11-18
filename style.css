@@ -4,6 +4,7 @@ html {
     height:auto;
 }
 
+<<<<<<< Updated upstream
 .header {
     position:absolute;
     width:100vw;
@@ -20,6 +21,37 @@ html {
     top:0.75vh;
     height:85;
     width:111px;
+=======
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    background: #535353;
+}
+
+/*HEADER CONTAINER*/
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+
+    background: #FFFFFF;
+    border-bottom: 4px solid #1596D0;
+}
+.logo-container a {
+    text-decoration: none;
+>>>>>>> Stashed changes
 }
 
 .nexus-logo {
@@ -30,7 +62,17 @@ html {
     height:90px;
     width:137px;
 }
+<<<<<<< Updated upstream
 
+=======
+.head-button-container {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border:1px solid orangered; */
+}
+>>>>>>> Stashed changes
 .button {
     border:1px solid transparent;
     border-radius: 4px;
@@ -56,10 +98,23 @@ html {
 /* .workspace {
     position:absolute;
     width: 100vw;
+<<<<<<< Updated upstream
     height: 100vh;
     top: 0px;
     left: 0px;
 } */
+=======
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid green; */
+}
+.page {
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: stretch;
+    width: 100%;
+}
+>>>>>>> Stashed changes
 
 .side-bar {
     position:absolute;
@@ -70,8 +125,13 @@ html {
     background:#1596D0;
 }
 
+<<<<<<< Updated upstream
 .menu-btn {
     border:1px solid transparent;
+=======
+    border:none;
+    cursor:pointer;
+>>>>>>> Stashed changes
 
     font-family:'Font Awesome 5 Free';
     font-style:normal;
@@ -87,8 +147,12 @@ html {
     top:10px;
     left:20%;
 }
+<<<<<<< Updated upstream
 
 .menu-btn.active,.menu-btn.collapsible:hover {
+=======
+.menu-btn.active,.menu-btn:hover {
+>>>>>>> Stashed changes
     background-color: rgba(15, 109, 153, 0.7);
     border: 1px solid transparent;
     border-radius: 5px;
@@ -96,6 +160,7 @@ html {
 }
 
 .menu {
+<<<<<<< Updated upstream
     position:absolute;
     z-index: 1;
     width: 0;
@@ -109,4 +174,182 @@ html {
 body {
     align-items: center;
     background:#535353;
+=======
+    display: flex;
+    flex-flow: column wrap;
+
+    width: 0px;
+    height: 100%;
+    max-width: 550px;
+    max-height: 100%;
+
+    transition: 0.75s ease-in-out;
+    background-color: #E4E4E4;
+}
+.field {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.field-box {
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 40px;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    background-color: white;
+}
+.large.field-box {
+    min-width: 380px;
+}
+.collapsible.field-box {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.label {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 17pt;
+    line-height: 27pt;
+    text-align: left;
+
+    padding-right: 10px;
+
+    color: #000000;
+}
+.hint {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: left;
+
+    padding-left: 10px;
+
+    color: #969696;
+}
+.hint.active {
+    font-style: normal;
+    font-weight: 400;
+
+    color: #888888;
+}
+.expand-btn {
+    text-align:center;
+    cursor: pointer;
+
+    padding-right: 10px;
+    padding-top: 4px;
+}
+
+#year {
+    padding-top: 25px;
+}
+#option {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    justify-content: space-between;
+
+    padding-top: 5px;
+
+    min-width: 380px;
+}
+
+#granular {
+    padding-top: 73px;
+}
+
+#index {
+    padding-top: 73px;
+}
+
+.btn-text {
+    padding-left: 10px;
+}
+.menu-icon {
+    padding-right: 10px;
+    padding-left: 12px;
+}
+
+#selection {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 100px;
+
+    cursor: pointer;
+}
+.selection-mode {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 45px;
+    max-width: 390px;
+    
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+    background: #1596D0;
+}
+
+.user-request-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+
+    max-width: 390px;
+    margin-left: 20px;
+    padding-top: 70px;
+}
+.user-request-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    border-radius: 10px;
+
+    color: #000000;
+    background: #D9D9D9;
+
+    /* cursor:no-drop; */
+}
+
+.user-request-btn.active {
+    color: #ffffff;
+    background: #1596D0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.earth-engine-app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+iframe {
+    flex: 1 0 auto;
+>>>>>>> Stashed changes
 }

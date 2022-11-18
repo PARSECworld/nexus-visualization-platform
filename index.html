@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1fdc740535.js" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="style.css">
@@ -27,16 +28,128 @@
         </div>
     </div>
     <div class="workspace">
+<<<<<<< Updated upstream
         <div class="side-bar">
             <button class="collapsible menu-btn">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div id="menu" class="menu"></div>
+=======
+        <div class="app page">
+            <div class="side-bar">
+                <button class="menu-btn" onclick="expand(this, 'menu')">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div id="menu" class="collapsible menu" value="0px,100%">
+                <div id="year" class="field">
+                    <div class="label">Ano de predição</div>
+                    <div class="large field-box">
+                        <div class="hint">Selecione ano pré carregado</div>
+                        <div class="expand-btn">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div id="option">
+                        <div class="label">ou</div>
+                        <div class="field-box">
+                            <div class="hint">Digite um ano específico</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="granular" class="field">
+                    <div class="label">Granularidade</div>
+                    <div class="large field-box">
+                        <div class="hint active">5 regiões geoeconômicas</div>
+
+                        <div class="expand-btn">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="index" class="field">
+                    <div class="label">Indicador</div>
+                    <div class="large field-box">
+                        <div class="hint active">Longevidade</div>
+
+                        <div class="expand-btn">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="selection">
+                    <div class="selection-mode off">
+                        <div class="btn-text">Selecionar áreas no mapa</div>
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-map-marked-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-request-container">
+                    <div class="user-request-btn visualize-btn inactive">
+                        <div class="btn-text">Visualizar</div>
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="user-request-btn download-btn inactive">
+                        <div class="btn-text">Download</div>
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-file-csv"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="earth-engine-app">
+                <iframe id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
+                allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow: auto;"
+                src="https://igorzoeller.users.earthengine.app/view/nexus-web-app"></iframe>
+            </div>
+        </div>
+        <div class="project page" style="display: none;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        <div class="method page" style="display: none;">
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+                sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+                dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
+                ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel
+                eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel
+                illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+            </p>
+>>>>>>> Stashed changes
         </div>
     </div>
     <div class="project"></div>
     <div class="method"></div>
     <script>
+        function expand(btn, expandable_item_id) {
+            btn.classList.toggle("active");
+            var item = document.getElementById(expandable_item_id);
+            const minValues = item.getAttribute("value").split(",");
+            const minWidth  = minValues[0];
+            const minHeight = minValues[1];
+            var style = window.getComputedStyle(item);
+            if (!btn.classList.contains("active")) {
+                item.style.width  = minWidth;
+                item.style.height = minHeight;
+            } else {
+                item.style.width  = style.maxWidth;
+                item.style.height = style.maxHeight;
+            }
+            console.log(item.style.width);
+        }
+    </script>
+    <!-- <script>
         var menu_btn = document.getElementsByClassName("collapsible")[0];
         menu_btn.addEventListener("click", function() {
             this.classList.toggle("active");
@@ -47,7 +160,7 @@
                 menu.style.width = "550px";
             }
         });
-    </script>
+    </script> -->
     <script>
         var page_map = {
             "plataforma" : "workspace",
