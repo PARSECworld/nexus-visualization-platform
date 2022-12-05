@@ -1,2 +1,4 @@
-.json
+*.json
+*BR.js
 *unused/*
+*.zip
