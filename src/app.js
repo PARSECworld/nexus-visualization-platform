@@ -9,11 +9,6 @@ frame.LNG = -53.1805017;
 frame.DEFAULT_COLOR  = "#009999";
 frame.SELECTED_COLOR = "#FF5733";
 
-// frame.layers = {
-//   "mun" : layer_municipios
-//   ,"state" : layer_estados
-// }
-
 frame.App = class {
   map = null;
   layers = {};
@@ -83,7 +78,6 @@ async function initialize() {
   });
   app.map.data.addListener("setproperty", function(event) {
     var propertyName = event.name;
-
   })
 }
 
