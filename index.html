@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1fdc740535.js" crossorigin="anonymous">
     </script>
@@ -12,6 +13,7 @@
     <title>Nexus Web App</title>
 </head> 
 <body>
+    <div class="placeholder"></div>
     <div class="header">
         <div class="logo-container">
             <a href="https://parsecproject.org/">
@@ -111,25 +113,41 @@
                 src="http://127.0.0.1:3000/src/earthengineapp.html"></iframe>
             </div>
         </div> -->
-        <div id="project" class="page">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-            </p>
+        <div id="project" class="page active">
+            <div class="text-container">
+                <div id="title">
+                    <p>Estimativa de Indicadores Socioeconômicos a partir de Imagens de Satélite na área NEXUS</p>
+                </div>
+                <img id="nexusarea" src="media/nexusarea.png"><p id="nexusarea-legend">A área NEXUS corresponde a aproximadamente 40% da área do país.</p></img>
+                <div id="project-description">
+                    <p>O projeto Parsec tem por objetivo aplicar técnicas de Data Science e Aprendizado de Máquina voltadas para aplicações de gerenciamento e preservação da biodiversidade mundial. Em parceria com a Universidade de São Paulo e o Instituto Nacional de Pesquisas Espaciais, está sendo conduzido um estudo na área NEXUS, uma região de aproximadamente 3,4 milhões de quilômetros quadrados dentro do território brasileiro, cobrindo as bacias hidrográficas do Rio São Francisco e Rio Parnaíba.</p>
+                    <p>O projeto de formatura auxilia neste estudo e propõe, inspirado em trabalhos semelhantes realizados no continente africano em anos anteriores, a estimativa de indicadores de renda, longevidade e alfabetização em toda esta área, utilizando imagens de satélite disponíveis publicamente na plataforma Google Earth Engine. A contribuição deste trabalho é a disponibilização de um modelo de rede neural treinado para este propósito, além do desenvolvimento de uma plataforma interativa na internet que permite a utilização do modelo para predizer e visualizar indicadores em qualquer região do Brasil.</p>
+                    <p>A coleta de indicadores ambientais e socioeconômicos é uma das principais ferramentas para guiar a tomada de decisões de políticas públicas e normalmente se dá através do censo conduzido a cada dez anos pelo IBGE. Este intervalo, já muito longo, pode se estender ainda mais, devido a fatores externos como a pandemia de COVID-19 que atrasou o censo de 2020, o qual deve ser concluído apenas em 2023. Dado a grande importância desses dados, há a motivação de desenvolver alternativas que possam tornar sua aquisição mais confiável e rápida, aumentando sua cobertura espacial e temporal.</p>
+                </div>
+            </div>
         </div>
         <div id="method" class="page">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-                ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel
-                eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel
-                illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-            </p>
+            <div class="text-container">
+                <img id="dataflow" src="media/dataflow.png"></img>
+            </div>
+        </div>
+        <div class="side-box">
+            <div class="authors">
+                <p class="t">Autores</p>
+                <p class="a">Carlos Massao Oishi Giuzio</p>
+                <p class="e"><i class="fa-solid fa-envelope"></i>carlosgiuzio@usp.br</p>
+                <p class="a">Igor Varela Zoeller</p>
+                <p class="e"><i class="fa-solid fa-envelope"></i>igorzoeller@usp.br</p>
+                <p class="a">Rafael Araujo Coelho</p>
+                <p class="e"><i class="fa-solid fa-envelope"></i>rafaelcoelho@usp.br</p>
+            </div>
+            <div class="ack">
+                <p class="t">Orientação e Coorientação</p>
+                <p class="a">Prof. Dr. Pedro Luiz Pizigatti Corrêa</p>
+                <p class="e"><i class="fa-solid fa-envelope"></i>pedro.correa@usp.br</p>
+                <p class="a">Dra. Marina Jeaneth Machicao Justo</p>
+                <p class="e"><i class="fa-solid fa-envelope"></i>machicao@usp.br</p>
+            </div>
         </div>
     </div>
     <script>
@@ -161,8 +179,8 @@
                         element.classList.remove("active");
                         relatedElement.classList.remove("active");
                     } else {
-                        element.classList.toggle("active");
-                        relatedElement.classList.toggle("active");
+                        element.classList.add("active");
+                        relatedElement.classList.add("active");
                     }
                 }
             });
