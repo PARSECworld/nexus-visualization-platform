@@ -36,12 +36,16 @@ frame.App = class {
     });
   }
 
-  async load_layer() {
-    this.map.data.addGeoJson(layer_estados);
+  remove_layer() {
+    var appMap = this.map;
+    appMap.data.forEach(function(feature) {
+      appMap.data.remove(feature)
+    });
   }
 
-  async remove_layer() {
-
+  load_layer(layer_FeatureCollection) {
+    this.remove_layer();
+    this.map.data.addGeoJson(layer_FeatureCollection);
   }
 
   static createMapInstance() {
@@ -51,17 +55,18 @@ frame.App = class {
       {
         center    : new google.maps.LatLng(frame.LAT, frame.LNG),
         zoom      : frame.DEFAULT_ZOOM,
-        mapTypeId : google.maps.MapTypeId.ROADMAP 
+        mapTypeId : google.maps.MapTypeId.ROADMAP
+        ,streetViewControl : false
       }
     );
     return map;
   }
 }
 
-async function initialize() {
+function initialize() {
   var app = new frame.App();
 
-  await app.load_layer();
+  app.load_layer(layer_estados);
 
   // Listeners //
   app.map.data.addListener('mouseover', function(event) {
@@ -81,4 +86,4 @@ async function initialize() {
   })
 }
 
-window.addEventListener('load', initialize, true)
+window.addEventListener('load', initialize)
