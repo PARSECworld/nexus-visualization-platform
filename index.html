@@ -17,8 +17,8 @@
     <div class="header">
         <div class="logo-container">
             <a href="https://parsecproject.org/">
-                <img id="parsec" class="logo" src="media/PARSEC-LOGO.jpg"></img>
-                <img id="nexus" class="logo" src="media/NEXUS-LOGO.png"></img>
+                <img id="parsec" class="logo" src="media/PARSEC-LOGO.jpg" style="height: 85;width: 111px;"></img>
+                <img id="nexus" class="logo" src="media/NEXUS-LOGO.png" style="height: 90px;width: 137px;"></img>
             </a>
         </div>
         <div class="header-menu">
@@ -118,17 +118,19 @@
                 <div id="title">
                     <p>Estimativa de indicadores socioeconômicos a partir de imagens de satélite na área NEXUS</p>
                 </div>
-                <img id="nexusarea" src="media/nexusarea.png"><p id="nexusarea-legend">A área NEXUS corresponde a aproximadamente 40% da área do país.</p></img>
+                <img id="nexusarea" src="media/nexusarea.png" style="width: 483.75px;height: 339px;"><p id="nexusarea-legend">A área NEXUS corresponde a aproximadamente 40% da área do país.</p></img>
                 <div id="project-description">
                     <p>O projeto Parsec tem por objetivo aplicar técnicas de Data Science e Aprendizado de Máquina voltadas para aplicações de gerenciamento e preservação da biodiversidade mundial. Em parceria com a Universidade de São Paulo e o Instituto Nacional de Pesquisas Espaciais, está sendo conduzido um estudo na área NEXUS, uma região de aproximadamente 3,4 milhões de quilômetros quadrados dentro do território brasileiro, cobrindo as bacias hidrográficas do Rio São Francisco e Rio Parnaíba.</p>
                     <p>O projeto de formatura auxilia neste estudo e propõe, inspirado em trabalhos semelhantes realizados no continente africano em anos anteriores, a estimativa de indicadores de renda, longevidade e alfabetização em toda esta área, utilizando imagens de satélite disponíveis publicamente na plataforma Google Earth Engine. A contribuição deste trabalho é a disponibilização de um modelo de rede neural treinado para este propósito, além do desenvolvimento de uma plataforma interativa na internet que permite a utilização do modelo para predizer e visualizar indicadores em qualquer região do Brasil.</p>
                     <p>A coleta de indicadores ambientais e socioeconômicos é uma das principais ferramentas para guiar a tomada de decisões de políticas públicas e normalmente se dá através do censo conduzido a cada dez anos pelo IBGE. Este intervalo, já muito longo, pode se estender ainda mais, devido a fatores externos como a pandemia de COVID-19 que atrasou o censo de 2020, o qual deve ser concluído apenas em 2023. Dado a grande importância desses dados, há a motivação de desenvolver alternativas que possam tornar sua aquisição mais confiável e rápida, aumentando sua cobertura espacial e temporal.</p>
+                    <p>O trabalho contribui através da criação de uma nova base de dados, originada da mescla de um conjunto contendo mais de 100 indicadores socioeconômicos fornecida pelo INPE e do conjunto de informações administrativas, geográficas e geométricas dos setores censitários brasileiros fornecido pelo IBGE. Foram treinados modelos preditivos de Deep Learning utilizando o backbone de uma Resnet 18 para estimar indicadores socioeconômicos utilizando imagens multiespectrais (ML) e nightlights (NL). Foi observado que o experimento MS apresenta um ótimo coeficiente de determinação (r²). Tendo em vista os resultados obtidos, entende-se que a adaptação da metodologia de referência proposta por este trabalho é adequada para a estimativa de indicadores socioeconômicos no cenário brasileiro.</p>
                 </div>
+                <img id="tableincome" src="media/income_table.png" style="margin-top:22px"></img>
             </div>
         </div>
         <div id="method" class="page">
             <div class="text-container">
-                <img id="dataflow" src="media/dataflow.png"></img>
+                <img id="dataflow" src="media/dataflow.png" style="width: 90%;"></img>
             </div>
         </div>
         <div class="side-box">
