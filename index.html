@@ -25,16 +25,16 @@
             <div id="metodologia" class="button" value="method">
                 Metodologia
             </div>
-            <div id="projeto"     class="button active" value="project">
+            <div id="projeto"     class="button" value="project">
                 Projeto
             </div>
-            <!-- <div id="plataforma"  class="button" value="app">
+            <div id="plataforma"  class="button active" value="app">
                 Plataforma
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="workspace">
-        <!-- <div id="app" class="page active">
+        <div id="app" class="page active">
             <div class="side-bar">
                 <button class="side-bar-menu-btn" onclick="expand(this, 'menu')">
                     <i class="fa-solid fa-bars"></i>
@@ -108,12 +108,13 @@
                 </div>
             </div>
             <div class="earth-engine-app">
+                <div class="loader"></div>
                 <iframe name="EE-Scripted-Map" id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
                 allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow: auto;"
-                src="http://127.0.0.1:3000/src/earthengineapp.html"></iframe>
+                src="http://127.0.0.1:3000/src/earthengineapp.html" onload="document.getElementsByClassName('loader')[0].style.display = 'none'"></iframe>
             </div>
-        </div> -->
-        <div id="project" class="page active">
+        </div>
+        <div id="project" class="page">
             <div class="text-container">
                 <div id="title">
                     <p>Estimativa de indicadores socioeconômicos a partir de imagens de satélite na área NEXUS</p>
@@ -181,6 +182,15 @@
                         element.classList.remove("active");
                         relatedElement.classList.remove("active");
                     } else {
+                        var side_box = document.getElementsByClassName("side-box")[0];
+                        console.log(side_box);
+                        console.log(element.id);
+                        if (element.id == "projeto" || element.id == "metodologia") {
+                            console.log("chaama");
+                            side_box.classList.add("active");
+                        } else {
+                            side_box.classList.remove("active");
+                        }
                         element.classList.add("active");
                         relatedElement.classList.add("active");
                     }

@@ -87,14 +87,18 @@ body {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    
     /* border: 5px solid green; */
 }
 
-.page.active.app{
+#app.page {
+    display: none;
+}
+#app.page.active{
     display: flex;
     flex-flow: row nowrap;
     align-content: stretch;
+    width: 100vw;
+    height: calc(100vh - 99px);
 }
 .side-bar {
     height: 100%;
@@ -307,6 +311,24 @@ body {
     font-weight: 400;
     cursor: pointer;
 }
+
+.loader {
+    position: fixed;
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #a0a0a0; /* Blue */
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+
+    top: 50%;
+    left: 50%;
+  }
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 .earth-engine-app {
     display: flex;
     width: 100%;
@@ -404,7 +426,11 @@ p.e {
 .fa-solid.fa-envelope {
     padding-right: 4px;
 }
+
 .side-box {
+    display: none;
+}
+.side-box.active {
     position: fixed;
     display: flex;
     flex-flow: column;
