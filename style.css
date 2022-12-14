@@ -143,43 +143,6 @@ body {
     background-color: #E4E4E4;
 }
 
-.field {
-    margin-left: 25px;
-    margin-right: 25px;
-}
-.field-box {
-    flex: 1 0 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-
-    min-height: 40px;
-
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    background-color: white;
-}
-.large.field-box {
-    min-width: 380px;
-}
-.text-container {
-    flex: 1 1 auto;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items:center;
-    justify-content: space-between;
-}
-.drop-down {
-
-    width: inherit;
-    height: inherit;
-    max-width: inherit;
-    max-height: 100px;
-
-    transition: 0.5s;
-    background: white;
-}
 .label {
     font-family: 'Roboto';
     font-weight: 300;
@@ -191,7 +154,24 @@ body {
 
     color: #000000;
 }
-.hint {
+.field {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.field-box {
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    min-height: 40px;
+    padding-right: 6px;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    background-color: white;
+
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 300;
@@ -199,44 +179,42 @@ body {
     line-height: 20px;
     text-align: left;
 
-    padding-left: 10px;
-
     color: #969696;
 }
-.hint.active {
-    font-style: normal;
-    font-weight: 400;
-
-    color: #888888;
+.large.field-box {
+    min-width: 370px;
 }
-.expand-btn {
-    text-align:center;
-    cursor: pointer;
+.drop-down {
+    border: transparent;
 
-    padding-right: 10px;
-    padding-top: 4px;
-}
+    padding-left: 10px;
 
-#year {
-    padding-top: 25px;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: left;
+
+    color: #6d6d6d;
 }
 #option {
     display: flex;
-    flex-flow: row nowrap;
-    align-items: baseline;
-    justify-content: space-between;
-
     padding-top: 5px;
-
-    min-width: 380px;
 }
+#option .input {
+    padding-left: 10px;
 
-#granular {
-    padding-top: 73px;
-}
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: left;
 
-#index {
-    padding-top: 73px;
+    color: #6d6d6d;
+
+    border: transparent;
 }
 
 .btn-text {
@@ -251,7 +229,7 @@ body {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 27px;
     line-height: 28px;
     text-align: center;
 
@@ -339,6 +317,9 @@ iframe {
     background: #FFFFFF;
 }
 
+.text-container {
+    align-items: center;
+}
 #project.page {
     display: none;
 }
