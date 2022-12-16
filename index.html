@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/1fdc740535.js" crossorigin="anonymous">
-    </script>
+    <script src="https://kit.fontawesome.com/1fdc740535.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Nexus Web App</title>
 </head> 
@@ -35,7 +35,7 @@
     </div>
     <div class="workspace">
         <div id="app" class="page active">
-            <form name="app_configs" method="post"></form>
+            <form name="app_configs" method="post" id="app_configs"></form>
             <div class="side-bar">
                 <button class="side-bar-menu-btn" onclick="expand(this, 'menu')">
                     <i class="fa-solid fa-bars"></i>
@@ -59,10 +59,10 @@
                     </div>
                 </div>
                 <div id="granular" class="field" style="padding-top: 73px;">
-                    <div class="label">Granularidade</div>
+                    <div class="label">Resolução</div>
                     <div class="large field-box">
                         <select id="granular-menu" class="drop-down" form="app_configs">
-                            <option value="region">5 regiões geoeconômicas</option>
+                            <!-- <option value="region">5 regiões geoeconômicas</option> -->
                             <option value="states">Estados</option>
                             <option value="municipalities">Municípios</option>
                         </select>
@@ -71,14 +71,14 @@
                 <div id="index" class="field" style="padding-top: 73px;">
                     <div class="label">Indicador</div>
                     <div class="large field-box">
-                        <select id="granular-menu" class="drop-down" form="app_configs">
+                        <select id="index-menu" class="drop-down" form="app_configs">
                             <option value="income">Renda</option>
                             <option value="literacy">Alfabetização</option>
                             <option value="longevity">Longevidade</option>
                         </select>
                     </div>
                 </div>
-                <div id="selection">
+                <!-- <div id="selection">
                     <div class="selection-mode">
                         <div class="btn-text">Selecionar áreas no mapa</div>
                         <div class="menu-icon">
@@ -99,7 +99,7 @@
                             <i class="fa-solid fa-file-csv"></i>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="earth-engine-app">
                 <div class="loader"></div>
@@ -196,6 +196,18 @@
         for (let i = 0; i < buttons.length; i++) {
             addRuleKeepOnlyOneActive(buttons[i], buttons);
         }
+    </script>
+    <script>
+        $('select#granular-menu').change(function() {
+            var layer = $('select#granular-menu').val(); // municipalities; states
+            console.log(layer);
+            document.getElementById("innerFrame").contentWindow.postMessage(layer, "http://127.0.0.1:3000/src/earthengineapp.html");
+        });
+        $('select#index-menu').change(function() {
+            var indicator = $('select#index-menu').val();
+            console.log(indicator);
+            document.getElementById("innerFrame").contentWindow.postMessage(indicator, "http://127.0.0.1:3000/src/earthengineapp.html");
+        })
     </script>
 </body>
 </html>

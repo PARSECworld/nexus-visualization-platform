@@ -1,31 +1,49 @@
+const lerp = (x, y, a) => x * (1 - a) + y * a;
+const hex2dec = hex => parseInt(hex, 16);
+const dec2hex = dec => dec.toString(16);
+
+indicators = ['income', 'literacy', 'longevity']
 // Define our namespace
 frame = {}
+var app;
 
 // Default map rendering configurations
 frame.DEFAULT_ZOOM = 4;
 frame.LAT = -14.2400732;
 frame.LNG = -53.1805017;
+frame.DEFAULT_LAYER = layer_estados;
+frame.DEFAULT_INDICATOR = "income";
 
-frame.DEFAULT_COLOR  = "#009999";
-frame.SELECTED_COLOR = "#FF5733";
+frame.PALLETE_MIN = "FF";
+frame.PALLETE_MAX = "00";
+
+
+// COLORMAP
+function colormap(a) {
+  var color = lerp(hex2dec(frame.PALLETE_MIN), hex2dec(frame.PALLETE_MAX), a);
+  return dec2hex(Math.round(color));
+}
 
 frame.App = class {
   map = null;
-  layers = {};
 
   constructor () {
     this.map = frame.App.createMapInstance();
+
+    this.indicator = frame.DEFAULT_INDICATOR;
+    this.layer = frame.DEFAULT_LAYER;
+
     this.map.data.setStyle( function(feature) {
-      var color = frame.DEFAULT_COLOR;
-      var opacity = 0.5;
+      var score = feature.j[app.indicator];
+      var color = `#FF${colormap(score)}00`;
+      var opacity = 0.65;
       var stroke = 0.6;
       var selected = feature.getProperty("selected") ?? false;
       if (selected) {
-        color = frame.SELECTED_COLOR;
-        opacity = 0.8;
+        opacity = 0.9;
         stroke = 1.0;
       }
-      return /** @type {!google.maps.Data.StyleOptions} */ (
+      return (
         {
           fillColor: color
           ,fillOpacity: opacity
@@ -33,19 +51,23 @@ frame.App = class {
           ,clickable: true
         }
       )
-    });
+    });    
   }
 
   remove_layer() {
+    console.log("removing layer.");
     var appMap = this.map;
     appMap.data.forEach(function(feature) {
       appMap.data.remove(feature)
     });
+    console.log("layer removed.");
   }
 
-  load_layer(layer_FeatureCollection) {
+  load_layer() {
     this.remove_layer();
-    this.map.data.addGeoJson(layer_FeatureCollection);
+    console.log('loading new layer.');
+    this.map.data.addGeoJson(this.layer);
+    console.log('layer loaded.');
   }
 
   static createMapInstance() {
@@ -64,9 +86,7 @@ frame.App = class {
 }
 
 function initialize() {
-  var app = new frame.App();
-
-  app.load_layer(layer_estados);
+  app = new frame.App();
 
   // Listeners //
   app.map.data.addListener('mouseover', function(event) {
@@ -83,7 +103,23 @@ function initialize() {
   });
   app.map.data.addListener("setproperty", function(event) {
     var propertyName = event.name;
-  })
+  });
+  app.load_layer();
 }
 
-window.addEventListener('load', initialize)
+function callLayerChange(event) {
+  console.log(event.data);
+  if (event.data == 'municipalities') {
+    app.layer = layer_municipios;
+    app.load_layer();
+  } else if (event.data == 'states') {
+    app.layer = layer_estados;
+    app.load_layer();
+  } else if (indicators.includes(event.data)) {
+    app.indicator = event.data;
+    app.load_layer();
+  }
+}
+
+window.addEventListener('load', initialize);
+window.addEventListener('message', callLayerChange, false);
