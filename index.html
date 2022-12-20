@@ -47,7 +47,7 @@
                     <div class="large field-box">
                         <select id="year-text" class="drop-down" form="app_configs">
                             <option value="2010">2010</option>
-                            <option value="2015">2015</option>
+                            <!-- <option value="2015">2015</option> -->
                         </select>
                     </div>
                     <div id="option">
@@ -101,10 +101,15 @@
                 </div> -->
             </div>
             <div class="earth-engine-app">
-                <div class="loader" style="z-index:1;"></div>
+                <div class="loader" style="z-index:2;"></div>
+                <div class="colorbar-container">
+                    <div class="colorbar" style="z-index:2;display:none;"></div>
+                    <div class="cbar-label" id="cbar-max" style="z-index:1;"></div>
+                    <div class="cbar-label" id="cbar-min" style="z-index:1;"></div>
+                </div>
                 <iframe class="EE-Scripted-Map" name="EE-Scripted-Map" id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
-                allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow:auto;z-index:0;"
-                src="src/earthengineapp.html" onload="document.getElementsByClassName('loader')[0].style.display = 'none'"></iframe>
+                allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow:auto;z-index:1;"
+                src="src/earthengineapp.html" onload="document.getElementsByClassName('loader')[0].style.display = 'none'; document.getElementsByClassName('colorbar')[0].style.display = 'block'"></iframe>
             </div>
         </div>
         <div id="project" class="page">
@@ -208,29 +213,36 @@
         $('select#granular-menu').change(function() {
             var layer = $('select#granular-menu').val(); // municipalities; states
             console.log(layer);
-            document.getElementById("innerFrame").contentWindow.postMessage(layer, "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
+            document.getElementById("innerFrame").contentWindow.postMessage(layer, "http://127.0.0.1:3000/src/earthengineapp.html");
         });
         $('select#index-menu').change(function() {
             var indicator = $('select#index-menu').val();
             console.log(indicator);
-            document.getElementById("innerFrame").contentWindow.postMessage(indicator, "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
+            document.getElementById("innerFrame").contentWindow.postMessage(indicator, "http://127.0.0.1:3000/src/earthengineapp.html");
         })
         window.addEventListener('message', function() {
             console.log(event.data);
             var messageContent = event.data;
             if (messageContent == 'loadingMap') {
                 document.getElementById('innerFrame').style.opacity = "0.4";
+                document.getElementsByClassName("colorbar-container")[0].style.opacity = "0.4";
                 document.getElementsByClassName('loader')[0].style.display = 'block';
                 document.getElementsByClassName('loader')[0].style.opacity = '1.0';
-                document.getElementsByClassName('loader')[0].style.margin  = 'calc(50vh - 100px) calc(50vw - 425px) auto';
                 setTimeout(function() {
-                    document.getElementById("innerFrame").contentWindow.postMessage('load', "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
+                    document.getElementById("innerFrame").contentWindow.postMessage('load', "http://127.0.0.1:3000/src/earthengineapp.html");
                 }, 500);
             } else if (messageContent == 'loadedMap') {
                 document.getElementById('innerFrame').style.opacity = "1.0";
+                document.getElementsByClassName("colorbar-container")[0].style.opacity = "1.0";
                 document.getElementsByClassName('loader')[0].style.display = 'none';
+            } else if (messageContent.startsWith("scores")) {
+                var content = messageContent.split("_");
+                var maxScore = content[1];
+                var minScore = content[2];
+                document.getElementById("cbar-max").innerHTML = maxScore;
+                document.getElementById("cbar-min").innerHTML = minScore;
             }
-        })
+        });
     </script>
 </body>
 </html>

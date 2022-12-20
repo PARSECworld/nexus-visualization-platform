@@ -86,7 +86,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: left;
     /* border: 5px solid green; */
 }
 
@@ -292,12 +292,13 @@ body {
 
 
 .earth-engine-app {
-    display: flex;
-    width: 100%;
+    position: relative;
+    width: calc(100% - 70px);
     height: 100%;
 }
 iframe {
-    flex: 1 1 auto;
+    width: 100%;
+    height: 99%;
     background: #dadada;
 }
 .loader {
@@ -310,7 +311,40 @@ iframe {
     height: 30px;
     animation: spin 2s linear infinite;
 
-    margin: calc(50vh - 100px) calc(50vw - 70px) auto;
+    left: 50%;
+    top: 50%;
+}
+.colorbar {
+    position: absolute;
+    
+    right: 15px;
+    top: 20%;
+    height: 60%;
+    width: 30px;
+
+    background: linear-gradient(rgb(255, 0, 0, 0.8), rgb(255, 255, 0, 0.8));
+    border: 1px solid black;
+}
+.cbar-label {
+    position: absolute;
+
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 27pt;
+    text-align: left;
+
+    padding-right: 10px;
+
+    color: #000000;
+
+    right: 45px;
+}
+#cbar-max {
+    top: 18.5%;
+}
+#cbar-min {
+    top: 78%;
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }

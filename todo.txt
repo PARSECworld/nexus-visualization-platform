@@ -1,8 +1,0 @@
-
-
-
-
-        - Fazer igual o visualiza nexus:
-            - Ao selecionar a resolução/indicador, mostra no mapa o colormap de todos indicadores preditos CHECK
-            - Colocar colorbar
-            - Selecionar regiões mostra os indicadores das mesmas num mesmo gráfico, para comparação.

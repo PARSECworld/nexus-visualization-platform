@@ -55,32 +55,32 @@ frame.App = class {
     this.map.data.setStyle( function(feature) {
       var score = feature.j[indicatorName];
       var color = `#FF${colormap(norm(minimum_feature_score, maximum_feature_score, score))}00`;
-      var opacity = 0.65;
+      var opacity = 0.8;
       var stroke = 0.6;
-      var selected = feature.getProperty("selected") ?? false;
-      if (selected) {
-        opacity = 0.9;
-        stroke = 1.0;
-      }
+      // var selected = feature.getProperty("selected") ?? false;
+      // if (selected) {
+      //   opacity = 0.9;
+      //   stroke = 1.0;
+      // }
       return ({fillColor: color, fillOpacity: opacity,strokeWeight: stroke,clickable: true})
     });
   }
 
   remove_layer() {
-    console.log("removing layer.");
+    //console.log("removing layer.");
     var appMap = this.map;
     appMap.data.forEach(function(feature) {
       appMap.data.remove(feature);
     });
-    console.log("layer removed.");
+    //console.log("layer removed.");
   }
 
   load_layer() {
     this.remove_layer();
-    console.log('loading new layer.');
+    //console.log('loading new layer.');
     this.map.data.addGeoJson(this.layer);
     this.color_layer();
-    console.log('layer loaded.');
+    //console.log('layer loaded.');
     window.parent.postMessage('loadedMap', '*');
   }
 
@@ -97,8 +97,9 @@ frame.App = class {
         minScore = score;
       }
     });
-    console.log(`max: ${maxScore}`);
-    console.log(`min: ${minScore}`);
+    window.parent.postMessage(`scores_${maxScore.toFixed(3)}_${minScore.toFixed(3)}`, '*');
+    //console.log(`max: ${maxScore}`);
+    //console.log(`min: ${minScore}`);
     this.map.data.forEach(feature => app.feature_style(feature, minScore, maxScore));
   }
 
@@ -154,17 +155,17 @@ function initialize() {
   // Listeners //
   app.map.data.addListener('mouseover', function(event) {
     app.openInfoWindow(event.feature);
-    app.map.data.revertStyle();
-    app.map.data.overrideStyle(event.feature, {strokeWeight: 1, fillOpacity: 0.8});
+    // app.map.data.revertStyle();
+    // app.map.data.overrideStyle(event.feature, {strokeWeight: 1, fillOpacity: 0.8});
   });
   app.map.data.addListener('mouseout', function(event) {
     app.closeInfoWindow();
     app.map.data.revertStyle();
   });
   app.map.data.addListener('click', function(event) {
-    var selected = event.feature.getProperty("selected") ?? false;
-    event.feature.setProperty("selected", !selected);
-    console.log(event.feature.j.Cod_estado);
+    // var selected = event.feature.getProperty("selected") ?? false;
+    // event.feature.setProperty("selected", !selected);
+    //console.log(event.feature.j.Cod_estado);
   });
   app.map.data.addListener("setproperty", function(event) {
     var propertyName = event.name;
@@ -172,7 +173,7 @@ function initialize() {
 }
 
 function callLayerChange(event) {
-  console.log(event.data);
+  //console.log(event.data);
   if (event.data == 'municipalities') {
     window.parent.postMessage('loadingMap', '*');
     app.layer = layer_municipios; 
@@ -190,15 +191,15 @@ function callLayerChange(event) {
 function loadGeoJSON() {
   $.getJSON("https://nexus-polygons.s3.amazonaws.com/estadosBR.json", function(data) {
     layer_estados = data;
-    console.log("estados");
-    console.log(layer_estados);
+    //console.log("estados");
+    //console.log(layer_estados);
     app.layer = layer_estados;
     app.load_layer();
   });
   $.getJSON("https://nexus-polygons.s3.amazonaws.com/municipiosBR.json", function(data_mun) {
     layer_municipios = data_mun;
-    console.log("municipios");
-    console.log(layer_municipios);
+    //console.log("municipios");
+    //console.log(layer_municipios);
   });
 }
 
