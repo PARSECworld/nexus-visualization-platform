@@ -208,12 +208,12 @@
         $('select#granular-menu').change(function() {
             var layer = $('select#granular-menu').val(); // municipalities; states
             console.log(layer);
-            document.getElementById("innerFrame").contentWindow.postMessage(layer, "src/earthengineapp.html");
+            document.getElementById("innerFrame").contentWindow.postMessage(layer, "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
         });
         $('select#index-menu').change(function() {
             var indicator = $('select#index-menu').val();
             console.log(indicator);
-            document.getElementById("innerFrame").contentWindow.postMessage(indicator, "src/earthengineapp.html");
+            document.getElementById("innerFrame").contentWindow.postMessage(indicator, "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
         })
         window.addEventListener('message', function() {
             console.log(event.data);
@@ -224,7 +224,7 @@
                 document.getElementsByClassName('loader')[0].style.opacity = '1.0';
                 document.getElementsByClassName('loader')[0].style.margin  = 'calc(50vh - 100px) calc(50vw - 425px) auto';
                 setTimeout(function() {
-                    document.getElementById("innerFrame").contentWindow.postMessage('load', "src/earthengineapp.html");
+                    document.getElementById("innerFrame").contentWindow.postMessage('load', "https://igorzoeller.github.io/nexus-web-app/src/earthengineapp.html");
                 }, 500);
             } else if (messageContent == 'loadedMap') {
                 document.getElementById('innerFrame').style.opacity = "1.0";
