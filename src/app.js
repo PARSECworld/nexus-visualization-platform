@@ -3,6 +3,10 @@ const norm = (min,max,x) => (x-min)/(max-min);
 const hex2dec = hex => parseInt(hex, 16);
 const dec2hex = dec => dec.toString(16).padStart(2, '0');
 
+
+//
+const ev = new Event("dataRetrieved");
+const loaded = new Event("appLoaded");
 indicators = ['income', 'literacy', 'longevity']
 indicadores = {
   'income': "Renda",
@@ -10,9 +14,10 @@ indicadores = {
   'longevity': "Longevidade"
 }
 var layer_estados;
-$.getJSON("https://nexus-polygons.s3.amazonaws.com/estadosBR.json", function(data) {
-  layer_estados = data;
-});
+var estadosLoaded = false;
+var layer_municipios;
+var municipiosLoaded = false;
+
 // Define our namespace
 frame = {}
 var app;
@@ -21,7 +26,6 @@ var app;
 frame.DEFAULT_ZOOM = 4;
 frame.LAT = -14.2400732;
 frame.LNG = -53.1805017;
-frame.DEFAULT_LAYER = layer_estados;
 frame.DEFAULT_INDICATOR = "income";
 
 frame.PALLETE_MIN = "FF";
@@ -37,12 +41,13 @@ function colormap(a) {
 frame.App = class {
   map = null;
   infoWindow = null;
+  layer = null;
 
   constructor () {
     this.map = frame.App.createMapInstance();
-
     this.indicator = frame.DEFAULT_INDICATOR;
-    this.layer = frame.DEFAULT_LAYER;  
+
+    window.dispatchEvent(loaded);
   }
 
   feature_style(feature, minimum_feature_score, maximum_feature_score) {
@@ -164,7 +169,6 @@ function initialize() {
   app.map.data.addListener("setproperty", function(event) {
     var propertyName = event.name;
   });
-  app.load_layer();
 }
 
 function callLayerChange(event) {
@@ -183,5 +187,21 @@ function callLayerChange(event) {
   }
 }
 
+function loadGeoJSON() {
+  $.getJSON("https://nexus-polygons.s3.amazonaws.com/estadosBR.json", function(data) {
+    layer_estados = data;
+    console.log("estados");
+    console.log(layer_estados);
+    app.layer = layer_estados;
+    app.load_layer();
+  });
+  $.getJSON("https://nexus-polygons.s3.amazonaws.com/municipiosBR.json", function(data_mun) {
+    layer_municipios = data_mun;
+    console.log("municipios");
+    console.log(layer_municipios);
+  });
+}
+
 window.addEventListener('load', initialize);
 window.addEventListener('message', callLayerChange, false);
+window.addEventListener('appLoaded', loadGeoJSON);
