@@ -72,6 +72,7 @@ frame.App = class {
     this.map.data.addGeoJson(this.layer);
     this.color_layer();
     console.log('layer loaded.');
+    window.parent.postMessage('loadedMap', '*');
   }
 
   color_layer() {
@@ -95,11 +96,16 @@ frame.App = class {
   openInfoWindow(feature) {
     var indicatorName = this.indicator;
     var indicatorValue = feature.j[indicatorName].toFixed(3);
-    var indicatorTarget = feature.j[`${indicatorName}_target`].toFixed(3);
+    var indicatorTarget = feature.j[`${indicatorName}_target`].toFixed(3) ?? 'Desconhecido';
+    var stateName = feature.j["Name_estado"] ?? "";
+    var municipalityName = feature.j["Name_municipio"] ?? "";
+    if (municipalityName != "") {
+      municipalityName = `${municipalityName} - `;
+    }
     var contentString = 
       '<div id="info-window-container">' +
       '<div id="info">' +
-      '<h1 id="heading">Valores do indicador</h1>' +
+      `<h1 id="heading">${municipalityName} ${stateName}</h1>` +
       '<div id="infoBody">' +
       `<p id="indicator-name">${indicadores[indicatorName]}</p>` +
       `<p>Valor predito: ${indicatorValue}</p>` +
@@ -160,13 +166,15 @@ function initialize() {
 function callLayerChange(event) {
   console.log(event.data);
   if (event.data == 'municipalities') {
-    app.layer = layer_municipios;
-    app.load_layer();
+    window.parent.postMessage('loadingMap', '*');
+    app.layer = layer_municipios; 
   } else if (event.data == 'states') {
+    window.parent.postMessage('loadingMap', '*');
     app.layer = layer_estados;
-    app.load_layer();
   } else if (indicators.includes(event.data)) {
+    window.parent.postMessage('loadingMap', '*');
     app.indicator = event.data;
+  } else if (event.data == 'load') {
     app.load_layer();
   }
 }

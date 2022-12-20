@@ -46,7 +46,6 @@
                     <div class="label">Ano de predição</div>
                     <div class="large field-box">
                         <select id="year-text" class="drop-down" form="app_configs">
-                            <option value="0">Selecione ano pré carregado</option>
                             <option value="2010">2010</option>
                             <option value="2015">2015</option>
                         </select>
@@ -54,7 +53,7 @@
                     <div id="option">
                         <div class="label">ou</div>
                         <div class="field-box">
-                            <input class="input" placeholder="Digite um ano específico"></input>
+                            <input class="input" placeholder="Digite um ano específico" disabled></input>
                         </div>
                     </div>
                 </div>
@@ -102,30 +101,39 @@
                 </div> -->
             </div>
             <div class="earth-engine-app">
-                <div class="loader"></div>
-                <iframe name="EE-Scripted-Map" id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
-                allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow: auto;"
+                <div class="loader" style="z-index:1;"></div>
+                <iframe class="EE-Scripted-Map" name="EE-Scripted-Map" id="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin
+                allow-popups-to-escape-sandbox allow-downloads" frameborder="0" style="overflow:auto;z-index:0;"
                 src="http://127.0.0.1:3000/src/earthengineapp.html" onload="document.getElementsByClassName('loader')[0].style.display = 'none'"></iframe>
             </div>
         </div>
         <div id="project" class="page">
             <div class="text-container">
-                <div id="title">
+                <div class="title">
                     <p>Estimativa de indicadores socioeconômicos a partir de imagens de satélite na área NEXUS</p>
                 </div>
                 <img id="nexusarea" src="media/nexusarea.png" style="width: 483.75px;height: 339px;"><p id="nexusarea-legend">A área NEXUS corresponde a aproximadamente 40% da área do país.</p></img>
                 <div id="project-description">
-                    <p>O projeto Parsec tem por objetivo aplicar técnicas de Data Science e Aprendizado de Máquina voltadas para aplicações de gerenciamento e preservação da biodiversidade mundial. Em parceria com a Universidade de São Paulo e o Instituto Nacional de Pesquisas Espaciais, está sendo conduzido um estudo na área NEXUS, uma região de aproximadamente 3,4 milhões de quilômetros quadrados dentro do território brasileiro, cobrindo as bacias hidrográficas do Rio São Francisco e Rio Parnaíba.</p>
-                    <p>O projeto de formatura auxilia neste estudo e propõe, inspirado em trabalhos semelhantes realizados no continente africano em anos anteriores, a estimativa de indicadores de renda, longevidade e alfabetização em toda esta área, utilizando imagens de satélite disponíveis publicamente na plataforma Google Earth Engine. A contribuição deste trabalho é a disponibilização de um modelo de rede neural treinado para este propósito, além do desenvolvimento de uma plataforma interativa na internet que permite a utilização do modelo para predizer e visualizar indicadores em qualquer região do Brasil.</p>
-                    <p>A coleta de indicadores ambientais e socioeconômicos é uma das principais ferramentas para guiar a tomada de decisões de políticas públicas e normalmente se dá através do censo conduzido a cada dez anos pelo IBGE. Este intervalo, já muito longo, pode se estender ainda mais, devido a fatores externos como a pandemia de COVID-19 que atrasou o censo de 2020, o qual deve ser concluído apenas em 2023. Dado a grande importância desses dados, há a motivação de desenvolver alternativas que possam tornar sua aquisição mais confiável e rápida, aumentando sua cobertura espacial e temporal.</p>
-                    <p>O trabalho contribui através da criação de uma nova base de dados, originada da mescla de um conjunto contendo mais de 100 indicadores socioeconômicos fornecida pelo INPE e do conjunto de informações administrativas, geográficas e geométricas dos setores censitários brasileiros fornecido pelo IBGE. Foram treinados modelos preditivos de Deep Learning utilizando o backbone de uma Resnet 18 para estimar indicadores socioeconômicos utilizando imagens multiespectrais (ML) e nightlights (NL). Foi observado que o experimento MS apresenta um ótimo coeficiente de determinação (r²). Tendo em vista os resultados obtidos, entende-se que a adaptação da metodologia de referência proposta por este trabalho é adequada para a estimativa de indicadores socioeconômicos no cenário brasileiro.</p>
+                    <p>O projeto Parsec tem por objetivo aplicar técnicas de Data Science e Aprendizado de Máquina voltadas para aplicações de gerenciamento e preservação da biodiversidade mundial. Em parceria com a Universidade de São Paulo e o Instituto Nacional de Pesquisas Espaciais (INPE), está sendo conduzido um estudo na área NEXUS, uma região de aproximadamente 3,4 milhões de quilômetros quadrados dentro do território brasileiro, cobrindo as bacias hidrográficas do Rio São Francisco e Rio Parnaíba.</p>
+                    <p>O projeto de formatura auxilia neste estudo e propõe, inspirado em trabalhos semelhantes realizados no continente africano em anos anteriores, a estimativa de indicadores de renda, longevidade e alfabetização em toda esta área, utilizando imagens de satélite disponíveis publicamente pela API do Google Earth Engine. A contribuição deste trabalho é a criação e documentação passo a passo de uma metodologia para estimar indicadores no território brasileiro através do treinamento de modelos de Deep Learning utilizando imagens de satélite, além de propor um protótipo de uma plataforma interativa na Internet para a visualização dos indicadores estimados no mapa brasileiro.</p>
+                    <p>O trabalho também contribui com a criação de um novo conjunto de dados, originado da mescla de um conjunto contendo mais de 100 indicadores socioeconômicos fornecidos pelo INPE e as informações administrativas, geográficas e geométricas dos setores censitários brasileiros fornecidas pelo IBGE.</p>
+                    <p>Modelos de Deep Learning foram treinados usando o backbone de uma ResNet-18 para estimar indicadores socioeconômicos usando imagens multiespectral e noturna. Observou-se que os experimentos multiespectral eram apropriados para prever os valores alvo sobre o conjunto de dados proposto, enquanto os modelos usando apenas luzes noturnas desempenharam abaixo das expectativas devido a limitações de dados. Tendo em vista os resultados obtidos, entende-se que a metodologia proposta por este trabalho é adequada para a estimativa de indicadores socioeconômicos no cenário brasileiro.</p>
+                    <p>O projeto demonstra a possibilidade de estimar indicadores socioeconômicos a partir de imagens de satélite para o caso brasileiro. Os modelos permitiram uma série de experimentações em imagens multiespectrais e noturnas levando ao entendimento das suas relações com os indicadores socioeconômicos e, para para as bandas multiespectrais, a correlação obtida entre os indicadores preditos e os reais é de até 42%, o que comprova a capacidade preditiva dos modelos no dataset proposto.</p>
                 </div>
                 <img id="tableincome" src="media/income_table.png" style="margin-top:22px"></img>
             </div>
         </div>
         <div id="method" class="page">
             <div class="text-container">
-                <img id="dataflow" src="media/dataflow.png" style="width: 90%;"></img>
+                <div class="title">
+                    <p>Descrição da metodologia proposta.</p>
+                </div>
+                <div id="workflow-description">
+                    <p>A parte do workflow desenvolvida pelos autores parte da obtenção e filtragem de indicadores na granularidade de setores censitários. Os 3 indicadores considerados como relevantes para estudar o desenvolvimento socioeconômico de comunidades são longevidade, renda e alfabetização. Em sequência, é realizada a seleção das regiões das imagens de satélite exige um critério rigoroso com condições que visam a garantir um modelo não enviesado e redução do custo de armazenamento: (a) cada imagem deve representar apenas um tipo de setor: urbano ou rural, (b) estes dois tipos devem estar disponíveis na base de dados em uma proporção que retrate a realidade, (c) uma determinada região só deve estar presente em apenas uma imagem selecionada. O projeto propõe duas estratégias para a seleção: Random Sampling e Neighboring Graphs.</p>
+                    <p>Já se baseando no workflow proposto pelo artigo de referência, Yeh. et al (2020), as imagens dos clusters selecionados são coletadas por meio da API do Google Earth Engine, informando seu centróide, escala (30 metros/pixel), resolução (224 x 224 pixels) e ano (2010).</p>
+                    <p>Os experimentos de Deep Learning estimam índices de riqueza em diversos países Africanos por meio de 3 redes neurais: MS, NL e MS+NL. A estrutura de MS+NL (Figura 2) apresenta entrada dupla: imagens de satélite diurnas (MS) e imagens noturnas (NL). O modelo conta com dois backbones de Resnet 18 pré-treinados para a extração de features das imagens. A camada fully connected combina as informações extraídas das entradas para uma regressão de Ridge. A avaliação da capacidade do modelo de explicar os indicadores estimados se dá por 4 métricas: coeficiente de correlação de pearson (r²), coeficiente de determinação (R²), mean squared error (MSE) e correlação de spearman (rank).</p>
+                </div>
+                <img id="dataflow" src="media/Model_Workflow_PT.png" style="width: 90%;"></img>
             </div>
         </div>
         <div class="side-box">
@@ -206,6 +214,22 @@
             var indicator = $('select#index-menu').val();
             console.log(indicator);
             document.getElementById("innerFrame").contentWindow.postMessage(indicator, "http://127.0.0.1:3000/src/earthengineapp.html");
+        })
+        window.addEventListener('message', function() {
+            console.log(event.data);
+            var messageContent = event.data;
+            if (messageContent == 'loadingMap') {
+                document.getElementById('innerFrame').style.opacity = "0.4";
+                document.getElementsByClassName('loader')[0].style.display = 'block';
+                document.getElementsByClassName('loader')[0].style.opacity = '1.0';
+                document.getElementsByClassName('loader')[0].style.margin  = 'calc(50vh - 100px) calc(50vw - 425px) auto';
+                setTimeout(function() {
+                    document.getElementById("innerFrame").contentWindow.postMessage('load', "http://127.0.0.1:3000/src/earthengineapp.html");
+                }, 500);
+            } else if (messageContent == 'loadedMap') {
+                document.getElementById('innerFrame').style.opacity = "1.0";
+                document.getElementsByClassName('loader')[0].style.display = 'none';
+            }
         })
     </script>
 </body>
