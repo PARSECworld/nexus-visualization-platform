@@ -9,6 +9,10 @@ indicadores = {
   'literacy': "Alfabetização",
   'longevity': "Longevidade"
 }
+var layer_estados;
+$.getJSON("https://nexus-polygons.s3.amazonaws.com/estadosBR.json", function(data) {
+  layer_estados = data;
+});
 // Define our namespace
 frame = {}
 var app;
