@@ -86,7 +86,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: left;
     /* border: 5px solid green; */
 }
 
@@ -290,31 +290,65 @@ body {
     cursor: pointer;
 }
 
+
+.earth-engine-app {
+    position: relative;
+    width: calc(100% - 70px);
+    height: 100%;
+}
+iframe {
+    width: 100%;
+    height: 99%;
+    background: #dadada;
+}
 .loader {
-    position: fixed;
-    border: 6px solid #f3f3f3; /* Light grey */
-    border-top: 6px solid #a0a0a0; /* Blue */
+    position: absolute;
+
+    border: 6px solid #ffffff;
+    border-top: 6px solid #868585;
     border-radius: 100%;
     width: 30px;
     height: 30px;
     animation: spin 2s linear infinite;
 
-    top: 50%;
     left: 50%;
-  }
-  
+    top: 50%;
+}
+.colorbar {
+    position: absolute;
+    
+    right: 15px;
+    top: 20%;
+    height: 60%;
+    width: 30px;
+
+    background: linear-gradient(rgb(255, 0, 0, 0.8), rgb(255, 255, 0, 0.8));
+    border: 1px solid black;
+}
+.cbar-label {
+    position: absolute;
+
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 27pt;
+    text-align: left;
+
+    padding-right: 10px;
+
+    color: #000000;
+
+    right: 45px;
+}
+#cbar-max {
+    top: 18.5%;
+}
+#cbar-min {
+    top: 78%;
+}
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-.earth-engine-app {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-iframe {
-    flex: 1 1 auto;
-    background: #FFFFFF;
 }
 
 .text-container {
@@ -342,7 +376,7 @@ iframe {
     background: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
-#title p {
+.title p {
     font-family: 'Montserrat';
     font-style: normal;
     font-size: 25px;
@@ -372,7 +406,7 @@ iframe {
 }
 #project-description p {
     text-indent: 20px;
-    line-height: 1.5;
+    line-height: 1.75;
     margin-bottom: -15px;
 }
 
@@ -381,6 +415,35 @@ iframe {
 }
 #method.page.active{
     display: block;
+    margin-right: 500px;
+}
+#method .text-container {
+    display: flex;
+    flex-flow: column wrap;
+
+    width: min(95%, 1300px);
+    margin-inline: auto;
+    margin-top: 2rem;
+    padding: 2rem;
+
+    border-radius: 20px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+#workflow-description {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 16px;
+    text-align: justify;
+}
+#workflow-description p {
+    text-indent: 20px;
+    line-height: 1.75;
+    margin-bottom: -15px;
+}
+#dataflow {
+    margin-top: 50px;
 }
 
 
@@ -440,7 +503,7 @@ p.e {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-#method.page {
+/* #method.page {
     display: none;
 }
 #method.page.active{
@@ -460,4 +523,4 @@ p.e {
 
     background: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-}
+} */

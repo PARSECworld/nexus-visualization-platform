@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDwNeUAu1RLS6PPw1mwIperqDPohJo7UQ8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="text/javascript" src="https://maps-api-ssl.google.com/maps/api/js?key=AIzaSyDwNeUAu1RLS6PPw1mwIperqDPohJo7UQ8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,900&display=swap" rel="stylesheet">
+    <!-- <script src="estadosBR.js"></script> -->
+    <!-- <script src="municipiosBR.js"></script> -->
     <script src="app.js"></script>
-    <script src="estadosBR.js"></script>
-    <script src="municipiosBR.js"></script>
     <style>
       html, body, #map {height: 100%; margin: 0; padding: 0;}
+    </style>
+    <style>
+      /* #info-window-container {
+        width:  275px;
+        height: 150px;
+      } */
+      #heading {
+        font-family: 'Montserrat';
+        font-weight: 900;
+        color:#1596D0;
+        text-align: center;
+      }
+      #infoBody {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: left;
+      }
+      #infoBody #indicator-name {
+        font-size: 18px;
+        font-weight: 900;
+        text-align: center;
+      }
+      .gm-style .gm-style-iw-tc::after {
+        display: none;
+      }
+      .gm-style .gm-style-iw-c {
+        position: fixed;
+        left: 30%;
+        /* width: 300px;
+        height: 250px; */
+      }
+      #info {
+        display: flex;
+        flex-flow: column nowrap;
+
+        min-width: 300px;
+        max-width: 185.41px;
+      }
     </style>
   </head>
   <body>
